@@ -1,16 +1,7 @@
 # rijksmuseum
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+In order to use this app assign API_KEY (in lib/globals.dart) your API key.<br/><br/>
+<img src="https://user-images.githubusercontent.com/39856703/130061765-c640eeae-f643-45ea-93d3-4bb3f3154ce3.jpg" height="400">
+<img src="https://user-images.githubusercontent.com/39856703/130061777-403cb570-b9aa-4b6c-8f6b-ff1d9a3ec3b0.jpg" height="400">
+<img src="https://user-images.githubusercontent.com/39856703/130061788-abd0ad96-a4ab-402f-80a6-b3c27553a7ef.jpg" height="400">
+<img src="https://user-images.githubusercontent.com/39856703/130061802-77d4edb2-357d-4ef8-bbe6-2839b229c731.jpg" height="400">
