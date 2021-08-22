@@ -17,7 +17,7 @@ class _MockRepository implements DataRepository {
   _MockRepository(this.loadingDuration, this.artObjectsCount);
 
   @override
-  Future<List<ArtObject>> fetchArtObjects(State? _) async {
+  Future<List<ArtObject>> fetchArtObjects() async {
     await Future.delayed(loadingDuration);
 
     if (didOccurInternetError) {
@@ -38,7 +38,7 @@ class _MockRepository implements DataRepository {
   }
 
   @override
-  Future<ArtObjectDetails> fetchArtObjectDetails(State? _, ArtObject __) async {
+  Future<ArtObjectDetails> fetchArtObjectDetails(ArtObject __) async {
     if (didOccurSomeOtherError) {
       didOccurSomeOtherError = false;
       throw 1;
