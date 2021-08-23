@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rijksmuseum/cubit/art_object_details/art_object_details_cubit.dart';
+import 'package:rijksmuseum/screens/art_objects_details_screen/widgets/art_object_picture.dart';
 import 'package:rijksmuseum/widgets/error_text_and_try_again_button.dart';
 import 'package:rijksmuseum/widgets/fetching_progress_indicator.dart';
 
@@ -8,16 +9,6 @@ class ArtObjectDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = BlocProvider.of<ArtObjectDetailsCubit>(context);
-
-    final img = bloc.artObject.webImgUrl;
-    var imgProvider = img == null
-        ? null
-        : ResizeImage(
-            NetworkImage(img),
-            width: 500,
-          );
-
-    var imgKey = UniqueKey();
 
     return Scaffold(
       appBar: AppBar(
@@ -27,36 +18,7 @@ class ArtObjectDetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              width: double.infinity,
-              height: 300,
-              child: ColoredBox(
-                color: Colors.black,
-                child: imgProvider == null
-                    ? null
-                    : BlocBuilder<ArtObjectDetailsCubit, ArtObjectDetailsState>(
-                        builder: (context, state) {
-                          if (state is ArtObjectDetailsFetching) {
-                            imgKey = UniqueKey();
-                            imgProvider.evict();
-                          }
-                          return Image(
-                            key: imgKey,
-                            image: imgProvider,
-                            errorBuilder: (_, __, ___) => const SizedBox(),
-                            loadingBuilder: (_, child, progress) {
-                              if (progress == null) return child;
-                              return const Center(
-                                child: CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation(Colors.white),
-                                ),
-                              );
-                            },
-                          );
-                        },
-                      ),
-              ),
-            ),
+            ArtObjectPicture(),
             const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -73,7 +35,7 @@ class ArtObjectDetailsScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Text(
                 'Principal or first maker: ' + bloc.artObject.principalOrFirstMaker,
-                style: TextStyle(fontWeight: FontWeight.w500),
+                style: const TextStyle(fontWeight: FontWeight.w500),
               ),
             ),
             const SizedBox(height: 20),
@@ -94,7 +56,7 @@ class ArtObjectDetailsScreen extends StatelessWidget {
                     children: [
                       Text(
                         'Materials: ' + state.artObjectDetails.materials.join(', '),
-                        style: TextStyle(fontStyle: FontStyle.italic),
+                        style: const TextStyle(fontStyle: FontStyle.italic),
                       ),
                       const SizedBox(height: 20),
                       Text(state.artObjectDetails.plaqueDescriptionEnglish),

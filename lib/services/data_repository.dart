@@ -12,10 +12,13 @@ abstract class DataRepository {
 }
 
 class HttpDataFetcher implements DataRepository {
-  Future<List<ArtObject>> fetchArtObjects() async {
-    final response = await http.get(Uri.parse('https://www.rijksmuseum.nl/api/en/collection?key=$API_KEY'));
+  final http.Client client;
 
-    final Map<String, dynamic> json = jsonDecode(response.body);
+  HttpDataFetcher(this.client);
+  Future<List<ArtObject>> fetchArtObjects() async {
+    final response = await client.get(Uri.parse('https://www.rijksmuseum.nl/api/en/collection?key=$API_KEY'));
+
+    final Map<String, dynamic> json = jsonDecode(utf8.decode(response.bodyBytes));
 
     return [
       for (final artObjectJson in json['artObjects'])
@@ -31,9 +34,9 @@ class HttpDataFetcher implements DataRepository {
 
   Future<ArtObjectDetails> fetchArtObjectDetails(ArtObject item) async {
     final response =
-        await http.get(Uri.parse('https://www.rijksmuseum.nl/api/en/collection/${item.objectNumber}?key=$API_KEY'));
+        await client.get(Uri.parse('https://www.rijksmuseum.nl/api/en/collection/${item.objectNumber}?key=$API_KEY'));
 
-    final Map<String, dynamic> json = jsonDecode(response.body);
+    final Map<String, dynamic> json = jsonDecode(utf8.decode(response.bodyBytes));
 
     final artObjectJson = json['artObject'];
     return ArtObjectDetails(
