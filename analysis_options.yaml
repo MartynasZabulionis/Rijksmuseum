@@ -1,0 +1,9 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - lib/**/*.gr.dart
+    - lib/**/*.g.dart
+    - test/**/*.mocks.dart
+    - lib/**/*.freezed.dart
+    - lib/**/*.gql.g.dart

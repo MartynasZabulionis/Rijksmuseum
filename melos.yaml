@@ -1,0 +1,8 @@
+name: my_project
+
+packages:
+  - packages/**
+
+command:
+  bootstrap:
+    usePubspecOverrides: true

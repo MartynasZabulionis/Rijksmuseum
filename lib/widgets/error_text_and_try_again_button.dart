@@ -11,13 +11,15 @@ class ErrorTextAndTryAgainButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Padding(
+      padding: const EdgeInsets.all(20),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             message,
-            style: TextStyle(
+            textAlign: TextAlign.center,
+            style: const TextStyle(
               color: Colors.grey,
               fontSize: 25,
             ),
