@@ -1,5 +1,9 @@
 # rijksmuseum
 An app developed with <b>Flutter</b></br>
+- The app contains two screens: art objects list page and art objects details page.
+- The page of list of art objects includes pagination (every page has 10 art objects) and infinite scroll.
+
+## Technical information
 - The concerns/responsibilities are split into different packages with the main lib package containing only UI stuff.
 - Uses <b>melos</b> to manage the packages.
 - Uses <b>bloc</b>s for UI state management.
