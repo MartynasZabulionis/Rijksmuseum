@@ -8,6 +8,7 @@ An app developed with <b>Flutter</b></br>
 - Uses <b>melos</b> to manage the packages.
 - Uses <b>bloc</b>s for UI state management.
 - Uses <b>Dio</b> as a HTTP client.
+- Uses <b>GetIt</b> as a service locator for accessing blocs in UI part, and <b>constructor dependency injection</b> for the rest usages.
 - Contains unit and widget tests.
 </br>
 <p float="left">
